@@ -1,0 +1,38 @@
+***Before reading the explanations below***
+in the files testcritter.cpp , Critter.cpp and critter.h that I have uploaded in grader I have corrected
+all the errors using the methods explained below as I wasn't sure whether we had to upload them this way or 
+with errors but I corrected it as all the errors are listed below.
+
+a)after commenting the "using namespace std" we get errors as:
+
+1- 'string' was not declared in this scope --- we get this error as the string class is 
+defined in the namespace std. We can get rid of this error by using std::string instead of string 
+
+2- 'cout' was not declared in this scope --- we get this error as the cout method is defined also in
+the namespace std . We can get rid of this error the same way using std::cout instead of cout
+
+3- variable or field 'setName' declared void --- We get this error on the Critter.cpp class
+as setName has a string parameter but since string is defined in namespace std and thus it says that its set to void
+We can get rid of this error again using std::string instead of string
+
+4- 'newname' was not declared in this scope --- We get this error again because newname is declared as a string reference and still
+since we have not defined string , we can get rid of this error using std::string instead of just string
+
+5- 'endl' was not declared in this scope --- We get this error again as the endl command is defined in the 
+std namespace , to get rid of this error we use std::endl instead
+
+6- 'cin' was not declared in this scope --- we get this error as again cin method is defined in the namespace std so 
+
+7- 'name' was not declared in this scope --- We get this error as the variable name is defined as a string which 
+is an object defined on namespace std so again to get rid of it we use std::string instead of string
+
+8- 'getline' was not declared in this scope --- We get this error as the getline() method is defined on namespace std 
+so again to get rid of it we use std::getline instead of getline
+
+b)after removing Critter:: before the method setHunger in Critter.cpp we get the error
+'hunger' was not declared in this scope --- we get this error as since hunger is a variable inside the Critter class
+it can not be accessed as a normal variable but it need an instance of a Critter object . in order to get rid of this error 
+we can either make hunger a public and static variable and use Critter.hunger instead of hunger in the setHunger function or
+we can make hunger public and then add a Critter type parameter to setHunger and acces the hunger variable ( for ex. if 
+we add Critter& c as an argument then we use c.hunger instead of just hunger) and of course we should remove the definition of the 
+setHunger method from the Critter.cpp file and then add it to the testCritter.cpp file and then it will be perfectly fine.
