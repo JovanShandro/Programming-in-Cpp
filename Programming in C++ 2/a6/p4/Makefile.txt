@@ -1,0 +1,29 @@
+all: test-all 
+	./testrat
+	./testexp
+	./testoth
+
+test-all: testRelationalOp testwithexception testotherop
+
+run-testrelational: testRelationalOp
+	./testrat
+
+testRelationalOp: Fraction.h Fraction.cpp testRelationalOp.cpp
+	g++ -Wall -o testrat Fraction.h Fraction.cpp testRelationalOp.cpp
+
+run-testwithexc: testwithexception
+	./testexp
+
+testwithexception: Fraction.h Fraction.cpp testwithexception.cpp
+	g++ -Wall -o testexp Fraction.h Fraction.cpp testwithexception.cpp
+
+run-testrelational: testRelationalOp
+	./testoth
+
+testotherop: Fraction.h Fraction.cpp testotherop.cpp
+	g++ -Wall -o testoth Fraction.h Fraction.cpp testotherop.cpp
+
+clear:
+	rm testrat
+	rm testexp
+	rm testoth
